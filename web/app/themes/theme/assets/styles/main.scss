@@ -1,4 +1,8 @@
+@import 'abstracts/variables';
+@import 'abstracts/settings';
 @import '~foundation-sites/scss/foundation';
 @include foundation-everything;
 
 @import 'layout/global';
+@import 'layout/sidebar';
+@import 'layout/main';
