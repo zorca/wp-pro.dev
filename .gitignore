@@ -19,3 +19,5 @@ web/.htaccess
 vendor/*
 !vendor/.gitkeep
 web/app/cache/
+node_modules/
+mix-manifest.json
