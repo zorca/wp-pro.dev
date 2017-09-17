@@ -1,11 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-  <div class="l-container">
-    <div class="l-grid">
-      @while (have_posts()) @php(the_post())
-      @php(the_content())
-      @endwhile
-    </div>
-  </div>
+  @while (have_posts()) @php(the_post())
+    <h1>{{the_title()}}</h1>
+    {!!ParsedownExtra::instance()->parse(get_the_content())!!}
+  @endwhile
 @endsection
