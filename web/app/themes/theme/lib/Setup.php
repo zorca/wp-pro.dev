@@ -23,6 +23,7 @@ class Setup
                 null,
                 true
             );
+            if (!is_admin()) wp_deregister_script('jquery');
         }, 100);
 
         /**
@@ -108,7 +109,6 @@ class Setup
                 ] + $config);
         });
 
-
         add_action('init', function () {
             // Disable the emoji's
             remove_action('wp_head', 'print_emoji_detection_script', 7);
@@ -118,10 +118,6 @@ class Setup
             remove_filter('the_content_feed', 'wp_staticize_emoji');
             remove_filter('comment_text_rss', 'wp_staticize_emoji');
             remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
-
-            if (!is_admin()) {
-                wp_deregister_script('jquery');
-            }
         });
 
         add_filter('user_can_richedit', function () {
