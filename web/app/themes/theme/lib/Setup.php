@@ -2,6 +2,9 @@
 
 namespace Oxboot\Theme;
 
+use Carbon_Fields\Carbon_Fields;
+use PostTypes\PostType;
+
 class Setup
 {
     public function __construct($config)
@@ -83,6 +86,8 @@ class Setup
              * @see assets/styles/layouts/_tinymce.scss
              */
             add_editor_style(OX_THEME_ROOT.'/dist/css/main.css');
+
+            Carbon_Fields::boot();
         }, 20);
 
         /**
@@ -123,5 +128,15 @@ class Setup
         add_filter('user_can_richedit', function () {
             return false;
         });
+
+        $qa = new PostType([
+            'name' => 'qa',
+            'singular' => __('QA', 'theme'),
+            'plural' => __('QA', 'theme')
+        ], [
+            'supports' => ['title']
+        ]);
+        $qa->taxonomy('category');
+        $qa->columns()->hide(['content']);
     }
 }

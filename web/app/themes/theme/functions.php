@@ -66,4 +66,5 @@ $config = [
 ];
 
 new Setup($config);
+new Fields();
 new View($config);
